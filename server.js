@@ -5,8 +5,13 @@ const bodyParser = require('body-parser')
 const db = require('./db')
 const cors = require('cors')
 //
-const furnSpaceController = require('./controllers/furnSpaceController')
+
+
+const { FurnPiece } = require('./models')
 const furnPieceController = require('./controllers/furnPieceController')
+
+// const { FurnSpace } = require('./models')
+// const furnSpaceController = require('./controllers/furnSpaceController')
 
 // require() imports and middleware here ^ ///////
 const PORT = process.env.PORT || 3001;
@@ -20,3 +25,10 @@ app.use(bodyParser.json())
 // app.use() middleware here ^ ///////////////////
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
 app.get('/', (req, res) => res.send('This is our landing page!'))
+
+//controller-related for Furniture Pieces (FurnPiece)
+app.get('/furnitures', furnPieceController.getAllFurnPiece)
+app.get('/furnitures/:id', furnPieceController.getFurnPieceById)
+app.post('/furnitures', furnPieceController.createFurnPiece)
+app.put('/furnitures/:id',furnPieceController.updateFurnPiece)
+app.delete('/furnitures/:id',furnPieceController.deleteFurnPiece)
