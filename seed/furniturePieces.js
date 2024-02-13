@@ -13,7 +13,7 @@ const main = async () => {
         price: 0,
         warrantyMonths: 0,
         description: ''
-        
+
     },
     {
         // furnSpace: furnPiece1[0]._id,
