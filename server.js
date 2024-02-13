@@ -4,9 +4,14 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 const db = require('./db')
 const cors = require('cors')
-//
-const furnSpaceController = require('./controllers/furnSpaceController')
+
+//initial declaration of constants for furniture pieces controller
+const { FurnPiece } = require('./models')
 const furnPieceController = require('./controllers/furnPieceController')
+
+//initial declaration of constants for furniture space controller
+const { FurnSpace } = require('./models')
+const furnSpaceController = require('./controllers/furnSpaceController')
 
 // require() imports and middleware here ^ ///////
 const PORT = process.env.PORT || 3001;
@@ -20,3 +25,17 @@ app.use(bodyParser.json())
 // app.use() middleware here ^ ///////////////////
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
 app.get('/', (req, res) => res.send('This is our landing page!'))
+
+//controller-related for Furniture Pieces (FurnPiece)
+app.get('/furnitures', furnPieceController.getAllFurnPiece)
+app.get('/furnitures/:id', furnPieceController.getFurnPieceById)
+app.post('/furnitures', furnPieceController.createFurnPiece)
+app.put('/furnitures/:id',furnPieceController.updateFurnPiece)
+app.delete('/furnitures/:id',furnPieceController.deleteFurnPiece)
+
+//controller-related for Furniture Spaces (FurnSpace)
+app.get('/furnitureSpace', furnSpaceController.getAllFurnSpace)
+app.get('/furnitureSpace/:id', furnSpaceController.getFurnSpaceById)
+app.post('/furnitureSpace', furnSpaceController.createFurnSpace)
+app.put('/furnitureSpace/:id',furnSpaceController.updateFurnSpace)
+app.delete('/furnitureSpace/:id',furnSpaceController.deleteFurnSpace)
