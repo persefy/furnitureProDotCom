@@ -35,36 +35,36 @@ const createFurnSpace = async (req, res) => {
     }
 }
 
-const updateFurnSpace = async (req, res) => {
-    try {
-        let { id } = req.params;
-        let furnSpaces = await FurnSpace.findByIdAndUpdate(id, req.body, { new: true })
-        if (furnSpaces) {
-            return res.status(200).json(furnSpaces)
-        }
-        throw new Error("Furniture space info not found")
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-}
+// const updateFurnSpace = async (req, res) => {
+//     try {
+//         let { id } = req.params;
+//         let furnSpaces = await FurnSpace.findByIdAndUpdate(id, req.body, { new: true })
+//         if (furnSpaces) {
+//             return res.status(200).json(furnSpaces)
+//         }
+//         throw new Error("Furniture space info not found")
+//     } catch (error) {
+//         return res.status(500).send(error.message);
+//     }
+// }
 
-const deleteFurnSpace = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const deleted = await FurnSpace.findByIdAndDelete(id)
-        if (deleted) {
-            return res.status(200).send("Furniture space info deleted");
-        }
-        throw new Error("Furniture space info not found");
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-}
+// const deleteFurnSpace = async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const deleted = await FurnSpace.findByIdAndDelete(id)
+//         if (deleted) {
+//             return res.status(200).send("Furniture space info deleted");
+//         }
+//         throw new Error("Furniture space info not found");
+//     } catch (error) {
+//         return res.status(500).send(error.message);
+//     }
+// }
 
 module.exports = {
     getAllFurnSpace,
     getFurnSpaceById,
     createFurnSpace,
-    updateFurnSpace,
-    deleteFurnSpace
+    // updateFurnSpace,
+    // deleteFurnSpace
 }

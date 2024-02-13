@@ -3,7 +3,7 @@ const  { Schema } = require('mongoose')
 
 const FurnPiece = new Schema(
     {
-        furnSpace: {type: Schema.Types.ObjectId, ref: 'furnSpace_id'},
+        furnSpace_id: {type: Schema.Types.ObjectId, ref: 'furnSpace_id'},
         itemName: { type: String, required: true },
         price: { type: Number, required: true },
         warrantyMonths: { type: Number, required: true},
