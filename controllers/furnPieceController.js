@@ -2,8 +2,8 @@ const { FurnPiece } = require('../models');
 
 const getAllFurnPiece = async (req,res) => {
     try {
-        const furnitures = await FurnPiece.find()
-        res.json(furnitures)
+        const furnPieces = await FurnPiece.find()
+        res.json(furnPieces)
     } catch (error) {
         return res.status(500).send(error.message);
     }
@@ -14,9 +14,9 @@ const getFurnPieceById = async (req, res) => {
     try {
         const { id } = req.params;
         console.log(id);
-        const furniture = await FurnPiece.findById(id);
-        if (furniture) {
-            return res.json(furniture);
+        const furnPieces = await FurnPiece.findById(id);
+        if (furnPieces) {
+            return res.json(furnPieces);
         }
         return res.status(404).send('Furniture not found!');
     } catch (error) {
@@ -26,9 +26,9 @@ const getFurnPieceById = async (req, res) => {
 
 const createFurnPiece = async (req, res) => {
     try {
-        const furniture = await new FurnPiece(req.body);
-        await furniture.save();
-        return res.status(201).json({furniture,});
+        const furnPieces = await new FurnPiece(req.body);
+        await furnPieces.save();
+        return res.status(201).json({furnPieces,});
 
     } catch (error) {
         return res.status(500).json({ error: error.message});
@@ -38,9 +38,9 @@ const createFurnPiece = async (req, res) => {
 const updateFurnPiece = async (req, res) => {
     try {
         let { id } = req.params;
-        let furniture = await FurnPiece.findByIdAndUpdate(id, req.body, { new: true })
-        if (furniture) {
-            return res.status(200).json(furniture)
+        let furnPieces = await FurnPiece.findByIdAndUpdate(id, req.body, { new: true })
+        if (furnPieces) {
+            return res.status(200).json(furnPieces)
         }
         throw new Error("Furniture not found")
     } catch (error) {
