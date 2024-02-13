@@ -1,8 +1,8 @@
-const { furnPiece } = require('../models');
+const { FurnPiece } = require('../models');
 
 const getAllFurnPiece = async (req,res) => {
     try {
-        const furnitures = await furnPiece.find()
+        const furnitures = await FurnPiece.find()
         res.json(furnitures)
     } catch (error) {
         return res.status(500).send(error.message);
@@ -14,7 +14,7 @@ const getFurnPieceById = async (req, res) => {
     try {
         const { id } = req.params;
         console.log(id);
-        const furniture = await furnPiece.findById(id);
+        const furniture = await FurnPiece.findById(id);
         if (furniture) {
             return res.json(furniture);
         }
@@ -26,7 +26,7 @@ const getFurnPieceById = async (req, res) => {
 
 const createFurnPiece = async (req, res) => {
     try {
-        const furniture = await new furnPiece(req.body);
+        const furniture = await new FurnPiece(req.body);
         await furniture.save();
         return res.status(201).json({furniture,});
 
@@ -38,7 +38,7 @@ const createFurnPiece = async (req, res) => {
 const updateFurnPiece = async (req, res) => {
     try {
         let { id } = req.params;
-        let furniture = await furnPiece.findByIdAndUpdate(id, req.body, { new: true })
+        let furniture = await FurnPiece.findByIdAndUpdate(id, req.body, { new: true })
         if (furniture) {
             return res.status(200).json(furniture)
         }
@@ -51,7 +51,7 @@ const updateFurnPiece = async (req, res) => {
 const deleteFurnPiece = async (req, res) => {
     try {
         const { id } = req.params;
-        const deleted = await furnPiece.findByIdAndDelete(id)
+        const deleted = await FurnPiece.findByIdAndDelete(id)
         if (deleted) {
             return res.status(200).send("Furniture deleted");
         }
