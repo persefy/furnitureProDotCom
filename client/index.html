@@ -60,9 +60,24 @@
         }
         /* filtered Results Styling---------- */
         /* filtered Results Styling --END---- */
+        #displayFilteredItems {
+            display: none;
+        }
         #displayFilteredItems div {
             border: solid 1px #ccc;
             margin: 10px 0;
+            padding: 2px;
+        }
+        #displayFilteredItems .label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        #furnImg {
+            max-width: 400px;
+            
+        }
+        #furnImg img {
+            width: 100%;
         }
     </style>
 </head>
@@ -125,9 +140,11 @@
         const itemPrice = document.querySelector('#itemPrice');
         const itemWarrantyMonths = document.querySelector('#itemWarrantyMonths');
         const itemDescription = document.querySelector('#itemDescription');
-
+        const itemImg = document.querySelector('#furnImg img')
+        const dislayContent = document.querySelector('#displayFilteredItems');
 
         furnitureSearchBtn.addEventListener('click', async () => {
+            dislayContent.style.display = 'block';
             //get input from user
             let searchInput = furnitureSearchInput.value.toLowerCase();
             console.log(`Searching for ${searchInput}`)
@@ -147,23 +164,38 @@
                 let furnDescription = response.data[i].description.toLowerCase();
                 let furnWarranty = response.data[i].warrantyMonths;
                 let furnPrice = response.data[i].price;
-
+                let furnImg = response.data[i].pieceImgUrl;
                 
                 if (furnName.includes(searchInput)) {
                 itemName.append(furnName)
+                itemSeller.append(furnSeller)
+                itemDescription.append(furnDescription)
+                itemWarrantyMonths.append(furnWarranty)
+                itemPrice.append(furnPrice)
+                itemImg.setAttribute('src',`${furnImg}`)
                 }
                 if (furnSeller.includes(searchInput)) {
                     itemName.append(furnName)
+                    itemSeller.append(furnSeller)
+                    itemDescription.append(furnDescription)
+                    itemWarrantyMonths.append(furnWarranty)
+                    itemPrice.append(furnPrice)
+
                 }
                 if (furnDescription.includes(searchInput)) {
                     itemName.append(furnName)
+                    itemSeller.append(furnSeller)
+                    itemDescription.append(furnDescription)
+                    itemWarrantyMonths.append(furnWarranty)
+                    itemPrice.append(furnPrice)
+
                 }
-                if (furnWarranty.includes(searchInput)) {
-                    itemName.append(furnName)
-                }
-                if (furnPrice.includes(searchInput)) {
-                    itemName.append(furnName)
-                }
+                // if (furnWarranty.includes(searchInput)) {
+                //     itemName.append(furnName)
+                // }
+                // if (furnPrice.includes(searchInput)) {
+                //     itemName.append(furnName)
+                // }
 
             }
             
