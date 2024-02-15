@@ -128,13 +128,16 @@
 
 
         furnitureSearchBtn.addEventListener('click', async () => {
+            //get input from user
             let searchInput = furnitureSearchInput.value.toLowerCase();
-            console.log(searchInput)
+            console.log(`Searching for ${searchInput}`)
+
+            //define connection variable
             let response = await axios.get(`http://localhost:3001/furniture`);
             console.log(response.data)
             
-            // const pets = ['cat', 'dog', 'bat'];
-            // console.log(pets.includes('cat'));
+            
+
 
             for (let i = 0; i < response.data.length; i++) {
                 let furnPieceData = response.data[i];
@@ -146,12 +149,22 @@
                 let furnPrice = response.data[i].price;
 
                 
-                console.log(furnRoom)
+                if (furnName.includes(searchInput)) {
+                itemName.append(furnName)
+                }
+                if (furnSeller.includes(searchInput)) {
+                    itemName.append(furnName)
+                }
+                if (furnDescription.includes(searchInput)) {
+                    itemName.append(furnName)
+                }
+                if (furnWarranty.includes(searchInput)) {
+                    itemName.append(furnName)
+                }
+                if (furnPrice.includes(searchInput)) {
+                    itemName.append(furnName)
+                }
 
-                //console.log(furnSeller.includes('ng'));
-                //furnName required case to match
-
-                //console.log(furnName,furnSeller,furnRoom,furnDescription,furnWarranty,furnPrice)
             }
             
         })
