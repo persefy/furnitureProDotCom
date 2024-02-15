@@ -1,0 +1,155 @@
+body {
+    font-family: "Times New Roman", Times, serif;
+    margin: 0 auto;
+    max-width: 600px;
+    /* background: url("https://i.pinimg.com/originals/78/70/8c/78708c9aabf22c7ad52eaa850260384d.jpg"); */
+    
+    background-size: cover;
+  }
+
+div {
+    height: 200px;
+    background-size: cover;
+    position: relative;
+    margin: 40px 0 0 0;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
+  h1 {
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    font-size: 55px;
+    color: rgb(176, 160, 66);
+    margin: 50px 0 0 0;
+    font-weight:30
+  }
+  
+  h2 {
+    text-align: center;
+    color: rgb(176, 160, 66);
+    margin: 0px 0 30px 0;
+    font-weight:30
+  }
+
+  .room-buttons {
+    text-align: center;
+    white-space: nowrap; 
+    overflow-x: hidden; 
+}
+
+.room-button {
+    display: inline;
+    font-family: 'Brush Script MT', cursive; 
+    font-size: 20px;
+    margin: 10px; 
+    padding: 10px 17px;
+    border: none;
+    background-color: transparent;
+    color: rgb(176, 160, 66);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.room-button:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+  
+  p {
+    color: rgb(176, 160, 66);
+    font-weight: 200;
+    background: black;
+    background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+    background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+    background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+    padding: 10px;
+    line-height: 28px;
+    text-align: justify;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    height: 30px;
+    transition: height .5s;
+    -webkit-transition: height .5s;
+    -moz-transition: height .5s;
+  }
+  
+  .action {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+  
+  small {
+    opacity: 0;
+  }
+  
+  .show-description p {
+    height: 150px;
+  }
+  
+  .show-description small {
+    opacity: 1;
+  }
+  
+  .first {
+    background-image: url("https://rnb.scene7.com/is/image/roomandboard/category_living_subcat01?size=2400,2400&scl=1");
+  }
+  
+  .second {
+    background-image: url("https://www.primecabinetry.com/media/landing-page/dark-kitchen-cabinets/dark-kitchen-cabinets.jpg");
+  }
+  
+  .third {
+    background-image: url("https://images.furnituredealer.net/img/dealer/6382/slideshow/c3ba37e905a344afbaf62c11abfa93c6.jpg");
+  }
+  
+  .fourth {
+    background-image: url("https://assets.site-static.com/userFiles/2470/image/Fg9PY6JHy4uNzfSysDITMyMWEYYmZrI01693921593.jpg");
+  }
+  
+  .fifth {
+    background-image: url("https://c9g6u9p9.rocketcdn.me/wp-content/uploads/2013/02/SEASONAL-LIVING-SPIRALS-TEAK-COLLECTION-4.jpg");
+  }
+
+  .first,
+  .second,
+  .third,
+  .fourth,
+  .fifth {
+   background-size: cover;
+   position: relative;
+   margin: 40px 0 60px 0;
+   border-radius: 12px;
+   cursor: pointer;
+   opacity: 0.9; 
+  }
+  
+  .action {
+    float: right;
+  }
+  
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 50px;
+      margin-top: 20px;
+      line-height: 40px;
+    }
+    h2 {
+      font-size: 20px;
+      margin: 20px 0 30px 0;
+    }
+    div {
+      margin: 20px 12px 0 12px;
+    }
+    p {
+      font-size: 20px;
+      line-height: 24px;
+    }
+    small {
+      font-size: 16px;
+    }
+  }
