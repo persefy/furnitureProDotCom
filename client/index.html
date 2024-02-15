@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furniture Pro</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="./style.css">
-    <script delay src="./script.js"></script>
+    
     <!-- Add axios js link -->
 
     <style>
@@ -86,17 +87,18 @@
         </section>
         <section id="searchSec">
             <h2>Search for furniture being sold:</h2>
-            <input type="text" placeholder="enter furniture name or description" />
-            <input type="button" value="search" />
+            <input type="text" placeholder="enter furniture name or description" id="furnSearch"/>
+            <input type="button" value="search" id="furnSearchBtn"/>
             <div id="displayFilteredItems">
                 <!-- furniture data populated here -->
                 <div>
                     <p>
-                        <span class="label">Name</span><span class="data"></span> <br />
-                        <span class="label">Room</span><span class="data"></span> <br />
-                        <span class="label">Sold by:</span><span class="data"></span><br />
-                        <span class="label">Warranty &#40;months&#41;</span><span class="data"></span><br />
-                        <span class="label">Description</span><span class="data"></span><br />
+                        <span class="label">Name</span><span class="data" id="itemName"></span> <br />
+                        <span class="label">Price</span><span class="data" id="itemPrice"></span> <br />
+                        <span class="label">Room</span><span class="data" id="itemRoom"></span> <br />
+                        <span class="label">Sold by:</span><span class="data" id="itemSeller"></span><br />
+                        <span class="label">Warranty &#40;months&#41;</span><span class="data" id="itemWarrantyMonths"></span><br />
+                        <span class="label">Description</span><span class="data" id="itemDescription"></span><br />
                         <div id="furnImg">
                             <img src="#" alt="#" />
                         </div>
@@ -112,6 +114,47 @@
         </section>
 
     </main>
-    
+    <script>
+        let furnitureSearchInput = document.querySelector('#furnSearch');
+        const furnitureSearchBtn = document.querySelector('#furnSearchBtn');
+
+        //furniture data will populate into these
+        const itemSeller = document.querySelector("#itemSeller");
+        const itemName = document.querySelector('#itemName');
+        const itemRoom = document.querySelector('#itemRoom');
+        const itemPrice = document.querySelector('#itemPrice');
+        const itemWarrantyMonths = document.querySelector('#itemWarrantyMonths');
+        const itemDescription = document.querySelector('#itemDescription');
+
+
+        furnitureSearchBtn.addEventListener('click', async () => {
+            let searchInput = furnitureSearchInput.value.toLowerCase();
+            console.log(searchInput)
+            let response = await axios.get(`http://localhost:3001/furniture`);
+            console.log(response.data)
+            
+            // const pets = ['cat', 'dog', 'bat'];
+            // console.log(pets.includes('cat'));
+
+            for (let i = 0; i < response.data.length; i++) {
+                let furnPieceData = response.data[i];
+                let furnName = response.data[i].itemName.toLowerCase();
+                let furnSeller = response.data[i].seller.toLowerCase();
+                //let furnRoom = response.data[i].furnSpace_id;
+                let furnDescription = response.data[i].description.toLowerCase();
+                let furnWarranty = response.data[i].warrantyMonths;
+                let furnPrice = response.data[i].price;
+
+                
+                console.log(furnRoom)
+
+                //console.log(furnSeller.includes('ng'));
+                //furnName required case to match
+
+                //console.log(furnName,furnSeller,furnRoom,furnDescription,furnWarranty,furnPrice)
+            }
+            
+        })
+    </script>
 </body>
 </html>
